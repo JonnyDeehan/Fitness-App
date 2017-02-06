@@ -14,9 +14,23 @@ import Charts
 
 class ResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    // Graph types (modes) to be displayed
+    var isSpeedGraph: Bool = false
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var barView: BarChartView!
+    
+    @IBAction func graphTypeSelection(_ sender: Any) {
+        if(isSpeedGraph){
+            isSpeedGraph = false
+        }
+        else{
+            isSpeedGraph = true
+        }
+        // Plot New Results
+        plotResults()
+    }
 
     // Array for data to populate the table of results
     var resultsTableData:[[String]] = []
@@ -63,9 +77,6 @@ class ResultsViewController: UIViewController, UITableViewDataSource, UITableVie
         
         // Enable chart animation
         barView.animate(yAxisDuration: 1.5, easingOption: .easeInOutQuart)
-
-        // Chart description
-        barView.descriptionText = "Running Times"
         
     }
     
@@ -127,7 +138,6 @@ class ResultsViewController: UIViewController, UITableViewDataSource, UITableVie
                     }
                     // Plot Results
                     self.plotResults()
-
                 }
             }
             healthStore.execute(sampleQuery)
@@ -138,19 +148,57 @@ class ResultsViewController: UIViewController, UITableViewDataSource, UITableVie
         var dataEntries: [BarChartDataEntry] = []
         
         let resultsData = self.resultsTableData
-        var xCor = 1
         
-        for value in resultsData {
-            print(value)
-            // Start and end index of the string to fetch the running time in minutes
-            let startIndex = value[3].index(value[3].startIndex, offsetBy: 16)
-            let endIndex = value[3].index(value[3].endIndex, offsetBy: -8)
-
-            let minutes = value[3].substring(with: startIndex..<endIndex)
+        // Plot Time Taken Graph
+        if(!self.isSpeedGraph){
+            print("Time Taken")
+            var xCor = 1
             
-            let dataEntry = BarChartDataEntry(x: Double(xCor), y: Double(minutes)!)
-            dataEntries.append(dataEntry)
-            xCor+=1
+            for value in resultsData {
+                print(value)
+                // Start and end index of the string to fetch the running time in minutes
+                let startIndex = value[3].index(value[3].startIndex, offsetBy: 16)
+                let endIndex = value[3].index(value[3].endIndex, offsetBy: -8)
+
+                let minutes = value[3].substring(with: startIndex..<endIndex)
+                if(Double(minutes)! > 0){
+                    let dataEntry = BarChartDataEntry(x: Double(xCor), y: Double(minutes)!)
+                    dataEntries.append(dataEntry)
+                    xCor+=1
+                }
+            }
+            // Chart description
+            barView.descriptionText = "Running Times"
+        }
+        // Plot Speed Graph
+        else {
+            print("Speed Graph")
+            var xCor = 1
+            for value in resultsData {
+                print(value)
+                // Start and end index of the string to fetch the running time in minutes
+                let startIndex = value[3].index(value[3].startIndex, offsetBy: 16)
+                let endIndex = value[3].index(value[3].endIndex, offsetBy: -8)
+                
+                let minutes = value[3].substring(with: startIndex..<endIndex)
+                
+                let distanceStartIndex = value[1].index(value[1].startIndex, offsetBy: 16)
+                
+                let distanceEndIndex = value[1].index(value[1].endIndex, offsetBy: -5)
+                
+                let distance = value[1].substring(with: distanceStartIndex..<distanceEndIndex)
+                
+                var speed = Double(distance)!/Double(minutes)!
+                print(speed)
+                if(speed<100){
+                    speed*=1000
+                    let dataEntry = BarChartDataEntry(x: Double(xCor), y: Double(speed))
+                    dataEntries.append(dataEntry)
+                    xCor+=1
+                }
+            }
+            // Chart description
+            barView.descriptionText = "Speed [m/minute]"
         }
         let chartDataSet = BarChartDataSet(values: dataEntries, label: "WorkoutData")
         let chartData = BarChartData(dataSet: chartDataSet)
@@ -159,7 +207,6 @@ class ResultsViewController: UIViewController, UITableViewDataSource, UITableVie
         let xaxis = barView.xAxis
 
     }
-
     
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()

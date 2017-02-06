@@ -440,10 +440,21 @@ Strict Bodybuilding Nutrition Four to six small, well balanced meals a day is 
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vnl-li-TuA" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="16" y="72" width="343" height="326"/>
+                                <rect key="frame" x="16" y="126" width="343" height="272"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="44K-wb-qHB">
+                                <rect key="frame" x="81" y="72" width="213" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Time Taken"/>
+                                    <segment title="Average Speed"/>
+                                </segments>
+                                <connections>
+                                    <action selector="graphTypeSelection:" destination="gAE-RI-fGX" eventType="valueChanged" id="3Kq-ct-1we"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
