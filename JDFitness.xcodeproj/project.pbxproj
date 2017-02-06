@@ -27,12 +27,14 @@
 		A1C5F8B41DAD51E600D937C8 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C5F8B31DAD51E600D937C8 /* background.png */; };
 		A1CE43C91DA3E54F004D28DB /* UserInfoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A1CE43C71DA3E54F004D28DB /* UserInfoModel.xcdatamodeld */; };
 		A1CE62B61D9FEC2900DFA918 /* user_male2-512.png in Resources */ = {isa = PBXBuildFile; fileRef = A1CE62B51D9FEC2900DFA918 /* user_male2-512.png */; };
-		A1D8EF551DA6C3DD005C0414 /* FitnessRoutine.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D8EF541DA6C3DD005C0414 /* FitnessRoutine.png */; };
 		A1D8EF591DA6C6E8005C0414 /* JDFitnessButtonBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D8EF581DA6C6E8005C0414 /* JDFitnessButtonBackground.png */; };
 		A1D8EF5F1DA6CD02005C0414 /* JDFitnessNutritionGuide.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D8EF5E1DA6CD02005C0414 /* JDFitnessNutritionGuide.png */; };
+		A1FC258C1E3E3DC000D903F1 /* FitnessRoutine.png in Resources */ = {isa = PBXBuildFile; fileRef = A1FC258B1E3E3DC000D903F1 /* FitnessRoutine.png */; };
+		A7A04ED53F2FF82ABFE9A1D5 /* Pods_JDFitness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F53204C23B211D35465B0A /* Pods_JDFitness.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		29D96D6B24E01BAACABCEAC5 /* Pods-JDFitness.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JDFitness.release.xcconfig"; path = "Pods/Target Support Files/Pods-JDFitness/Pods-JDFitness.release.xcconfig"; sourceTree = "<group>"; };
 		A16C0C3D1DA3C14600F8E12A /* UserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		A16EB61C1DA92B6A00AC2DA5 /* MealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
 		A1867B3F1D9C2B5900EA0F0A /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -56,9 +58,11 @@
 		A1C5F8B31DAD51E600D937C8 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		A1CE43C81DA3E54F004D28DB /* UserInfoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserInfoModel.xcdatamodel; sourceTree = "<group>"; };
 		A1CE62B51D9FEC2900DFA918 /* user_male2-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "user_male2-512.png"; path = "../../../Downloads/user_male2-512.png"; sourceTree = "<group>"; };
-		A1D8EF541DA6C3DD005C0414 /* FitnessRoutine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FitnessRoutine.png; path = ../../../Downloads/FitnessRoutine.png; sourceTree = "<group>"; };
 		A1D8EF581DA6C6E8005C0414 /* JDFitnessButtonBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JDFitnessButtonBackground.png; sourceTree = "<group>"; };
 		A1D8EF5E1DA6CD02005C0414 /* JDFitnessNutritionGuide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JDFitnessNutritionGuide.png; sourceTree = "<group>"; };
+		A1FC258B1E3E3DC000D903F1 /* FitnessRoutine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FitnessRoutine.png; sourceTree = "<group>"; };
+		B1B093891533BEC037751B16 /* Pods-JDFitness.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JDFitness.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JDFitness/Pods-JDFitness.debug.xcconfig"; sourceTree = "<group>"; };
+		D0F53204C23B211D35465B0A /* Pods_JDFitness.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JDFitness.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A19A8D3A1DABE21500255C10 /* HealthKit.framework in Frameworks */,
+				A7A04ED53F2FF82ABFE9A1D5 /* Pods_JDFitness.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +110,7 @@
 				A1B6D02F1D9BBE16009178AF /* JDFitness */,
 				A1B6D02E1D9BBE16009178AF /* Products */,
 				A1C509891DAA91FC00F43606 /* Frameworks */,
+				D3FD618C943505BC08CFF389 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,10 +141,10 @@
 		A1C47A8C1DA41197009454C4 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				A1FC258B1E3E3DC000D903F1 /* FitnessRoutine.png */,
 				A1C5F8B31DAD51E600D937C8 /* background.png */,
 				A1C5F8B11DAD510100D937C8 /* WorkoutResults.png */,
 				A1D8EF5E1DA6CD02005C0414 /* JDFitnessNutritionGuide.png */,
-				A1D8EF541DA6C3DD005C0414 /* FitnessRoutine.png */,
 				A1D8EF581DA6C6E8005C0414 /* JDFitnessButtonBackground.png */,
 				A1CE62B51D9FEC2900DFA918 /* user_male2-512.png */,
 			);
@@ -149,8 +155,18 @@
 			isa = PBXGroup;
 			children = (
 				A19A8D391DABE21500255C10 /* HealthKit.framework */,
+				D0F53204C23B211D35465B0A /* Pods_JDFitness.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D3FD618C943505BC08CFF389 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B1B093891533BEC037751B16 /* Pods-JDFitness.debug.xcconfig */,
+				29D96D6B24E01BAACABCEAC5 /* Pods-JDFitness.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,9 +176,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1B6D03F1D9BBE16009178AF /* Build configuration list for PBXNativeTarget "JDFitness" */;
 			buildPhases = (
+				5755912C10B4DB902902A9AD /* [CP] Check Pods Manifest.lock */,
 				A1B6D0291D9BBE16009178AF /* Sources */,
 				A1B6D02A1D9BBE16009178AF /* Frameworks */,
 				A1B6D02B1D9BBE16009178AF /* Resources */,
+				5F5B8E88AFA1BBFE8F6EE5A4 /* [CP] Embed Pods Frameworks */,
+				741C91D99F309C1C9757728A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -221,16 +240,64 @@
 				A1D8EF5F1DA6CD02005C0414 /* JDFitnessNutritionGuide.png in Resources */,
 				A1C5F8B41DAD51E600D937C8 /* background.png in Resources */,
 				A1B6D03B1D9BBE16009178AF /* LaunchScreen.storyboard in Resources */,
-				A1D8EF551DA6C3DD005C0414 /* FitnessRoutine.png in Resources */,
 				A1C5F8B21DAD510100D937C8 /* WorkoutResults.png in Resources */,
 				A1CE62B61D9FEC2900DFA918 /* user_male2-512.png in Resources */,
 				A1B6D0381D9BBE16009178AF /* Assets.xcassets in Resources */,
+				A1FC258C1E3E3DC000D903F1 /* FitnessRoutine.png in Resources */,
 				A1D8EF591DA6C6E8005C0414 /* JDFitnessButtonBackground.png in Resources */,
 				A1B6D0361D9BBE16009178AF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5755912C10B4DB902902A9AD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5F5B8E88AFA1BBFE8F6EE5A4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JDFitness/Pods-JDFitness-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		741C91D99F309C1C9757728A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JDFitness/Pods-JDFitness-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A1B6D0291D9BBE16009178AF /* Sources */ = {
@@ -365,12 +432,13 @@
 		};
 		A1B6D0401D9BBE16009178AF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1B093891533BEC037751B16 /* Pods-JDFitness.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = JDFitness/JDFitness.entitlements;
 				INFOPLIST_FILE = JDFitness/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jdblogs.JDFitness;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jonny.JDFitness;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -378,12 +446,13 @@
 		};
 		A1B6D0411D9BBE16009178AF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29D96D6B24E01BAACABCEAC5 /* Pods-JDFitness.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = JDFitness/JDFitness.entitlements;
 				INFOPLIST_FILE = JDFitness/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jdblogs.JDFitness;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jonny.JDFitness;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

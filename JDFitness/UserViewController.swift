@@ -73,7 +73,10 @@ class UserViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             } else {
                 // Fallback on earlier versions
             }
-            
+            // Ensure the user can't return back to the main menu during intial first time use
+            // (have to ensure user inputs information first)
+            navigationController?.navigationBar.isUserInteractionEnabled = true
+            navigationController?.isNavigationBarHidden = false
             navigationController?.popViewController(animated: true)
         }
     }
@@ -147,6 +150,25 @@ class UserViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         return nil
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if #available(iOS 10.0, *) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            do {
+                var userInfoArray:[UserInfo] = try context.fetch(UserInfo.fetchRequest())
+                // If the UserInfo model is empty, then send the user to enter their information
+                if userInfoArray.isEmpty {
+                    navigationController?.navigationBar.isUserInteractionEnabled = false
+                    navigationController?.isNavigationBarHidden = true
+                }
+            }
+            catch {
+                print("Fetching Failed")
+            }
+        }
+    }
+    
+    
     @IBOutlet weak var ageTextField: UITextField!
     
     @IBOutlet weak var weightTextField: UITextField!
@@ -164,7 +186,7 @@ class UserViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+
         heightTextField.inputView = heightPickerView
         heightPickerView.delegate = self
         heightPickerView.dataSource = self

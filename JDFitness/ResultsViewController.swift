@@ -10,12 +10,19 @@ import Foundation
 import UIKit
 import HealthKit
 import HealthKitUI
+import Charts
 
 class ResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var barView: BarChartView!
+
+    // Array for data to populate the table of results
     var resultsTableData:[[String]] = []
+    
+    // Array to store running workout data
+    var runningWorkoutData: [String] = []
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
@@ -40,9 +47,26 @@ class ResultsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
         tableView.delegate = self
         tableView.dataSource = self
+        
+        // Disable chart legend
+        barView.legend.enabled = false
+        
+        // Diable zoom in function on graph
+        barView.scaleYEnabled = false
+        barView.scaleXEnabled = false
+        barView.pinchZoomEnabled = false
+        barView.doubleTapToZoomEnabled = false
+        
+        // Enable chart animation
+        barView.animate(yAxisDuration: 1.5, easingOption: .easeInOutQuart)
+
+        // Chart description
+        barView.descriptionText = "Running Times"
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -66,7 +90,7 @@ class ResultsViewController: UIViewController, UITableViewDataSource, UITableVie
                     NSLog("Display not allowed")
                 }
             }
-            var predicate = HKQuery.predicateForWorkouts(with: HKWorkoutActivityType.cycling)
+            var predicate = HKQuery.predicateForWorkouts(with: HKWorkoutActivityType.running)
             let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
             let sampleQuery = HKSampleQuery(sampleType: HKWorkoutType.workoutType(), predicate: predicate, limit: 0, sortDescriptors: [sortDescriptor])
             { (sampleQuery, results, error ) -> Void in
@@ -91,14 +115,51 @@ class ResultsViewController: UIViewController, UITableViewDataSource, UITableVie
                         let endIndex = samples.startDate.description.index(samples.startDate.description.startIndex, offsetBy: 9)
                         let durationInMinutes = Int(workout.duration/60)
                         var workoutData = ["Date: \(samples.startDate.description[startIndex...endIndex])", "Total Distance: \(workout.totalDistance!)", "Energy Burned: \(workout.totalEnergyBurned!)","Total Duration: \(durationInMinutes.description) minutes"]
+                        
+                        // Save running workout duration
+                        let runningWorkout = durationInMinutes.description
+                        
+                        // Generate the running data to json format and save locally
+                        self.runningWorkoutData.append(runningWorkout)
+                        
                         // Add the workout to the results table
                         self.resultsTableData.append(workoutData)
                     }
+                    // Plot Results
+                    self.plotResults()
+
                 }
             }
             healthStore.execute(sampleQuery)
         }
     }
+    
+    func plotResults(){
+        var dataEntries: [BarChartDataEntry] = []
+        
+        let resultsData = self.resultsTableData
+        var xCor = 1
+        
+        for value in resultsData {
+            print(value)
+            // Start and end index of the string to fetch the running time in minutes
+            let startIndex = value[3].index(value[3].startIndex, offsetBy: 16)
+            let endIndex = value[3].index(value[3].endIndex, offsetBy: -8)
+
+            let minutes = value[3].substring(with: startIndex..<endIndex)
+            
+            let dataEntry = BarChartDataEntry(x: Double(xCor), y: Double(minutes)!)
+            dataEntries.append(dataEntry)
+            xCor+=1
+        }
+        let chartDataSet = BarChartDataSet(values: dataEntries, label: "WorkoutData")
+        let chartData = BarChartData(dataSet: chartDataSet)
+        barView.data = chartData
+        
+        let xaxis = barView.xAxis
+
+    }
+
     
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()

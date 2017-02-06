@@ -31,7 +31,8 @@ class ViewController: UIViewController {
                 var userInfoArray:[UserInfo] = try context.fetch(UserInfo.fetchRequest())
                 // If the UserInfo model is empty, then send the user to enter their information
                 if userInfoArray.isEmpty {
-                    // Move to controller to enter informaton
+                    // Move to user input controller to enter informaton
+                    // [First time use of app essentially, move to the correct viewcontroller]
                     self.performSegue(withIdentifier: "InitialStartupUserInfo", sender: self)
                 }
             }
