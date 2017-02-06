@@ -7,7 +7,7 @@ target 'JDFitness' do
 
   # Pods for JDFitness
   pod 'Charts', '~> 3.0.1'
-  pod 'RealmSwift', '~> 2.0.2'
+  #pod 'RealmSwift', '~> 2.0.2'
 
   post_install do |installer|
     installer.pods_project.targets.each do |target|
